@@ -515,6 +515,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 226978395}
+  - component: {fileID: 226978396}
   m_Layer: 0
   m_Name: VolumeController
   m_TagString: Untagged
@@ -537,6 +538,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &226978396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226978394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9a442ab82906f44a6f80e3e69ab042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transferFunction: {fileID: 1572998203}
+  transferFunction2D: {fileID: 1953291887}
+  meshRenderers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  volumeContainerObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  renderMode: 2
+  tfRenderMode: 0
+  highLightMode: 0
+  lightingEnabled: 0
+  lightSource: 0
+  lightIntensity: 0.5
+  isosurfaceVal: 0.5
+  highlightPosition: {x: 0.5, y: 0.5}
+  highlightRadius: 0.707
+  clipedHeightWindow: {x: 0, y: 1}
+  gradientLightingThreshold: {x: 0.02, y: 0.15}
+  minGradient: 0
+  visibilityWindow: {x: 0, y: 1}
+  rayTerminationEnabled: 1
+  cubicInterpolationEnabled: 0
+  volumeHeight: 0
 --- !u!1 &240510862 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6212526355401918056, guid: 2621c40ea5f6fd743959e1c601f6b8a0, type: 3}
@@ -4872,6 +4921,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1572998203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f90861ddebbc14486139d1bbdf1c77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colourControlPoints:
+  - dataValue: 0
+    colourValue: {r: 0.11, g: 0.14, b: 0.13, a: 1}
+  - dataValue: 0.2415
+    colourValue: {r: 0.469, g: 0.354, b: 0.223, a: 1}
+  - dataValue: 0.3253
+    colourValue: {r: 1, g: 1, b: 1, a: 1}
+  alphaControlPoints:
+  - dataValue: 0
+    alphaValue: 0
+  - dataValue: 0.1787
+    alphaValue: 0
+  - dataValue: 0.2
+    alphaValue: 0.024
+  - dataValue: 0.28
+    alphaValue: 0.03
+  - dataValue: 0.4
+    alphaValue: 0.546
+  - dataValue: 0.547
+    alphaValue: 0.5266
 --- !u!1001 &1581250456
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6147,6 +6228,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1953291887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 207cc2cb9090f0f46be18cf25497ad3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxes:
+  - colour: {r: 1, g: 1, b: 1, a: 1}
+    alpha: 0.4
+    minAlpha: 0
+    rect:
+      serializedVersion: 2
+      x: 0.05
+      y: 0.1
+      width: 0.8
+      height: 0.7
 --- !u!1 &2006775839
 GameObject:
   m_ObjectHideFlags: 0

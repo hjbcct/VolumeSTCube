@@ -144,6 +144,9 @@ for slice in range(0,8):
     jsonResStr = json.dumps(jsonRes)
     jsonRes = {}
 
+    if(not os.path.exists(os.path.join(HERE, 'InterpolateResult'))):
+        os.makedirs(os.path.join(HERE, 'InterpolateResult'))
+
     OutputPath = os.path.join(HERE, 'InterpolateResult', f'volume_{variogram_model}_timeWidth_{startTime}_{endTime}_definition_{width}_{height}_expand_ratio_{expand_ratio}_sill_test.json')
     f = open(OutputPath, 'w')
     f.write(jsonResStr)

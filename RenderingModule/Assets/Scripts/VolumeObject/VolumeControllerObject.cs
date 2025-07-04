@@ -15,10 +15,6 @@ namespace UnityVolumeRendering
         [SerializeField, HideInInspector]
         public TransferFunction2D transferFunction2D;
 
-        //[SerializeField, HideInInspector]
-        //public VolumeDataset dataset;
-
-        //[SerializeField, HideInInspector]
         public MeshRenderer[] meshRenderers = new MeshRenderer[8];
 
         [SerializeField, HideInInspector]
@@ -90,6 +86,9 @@ namespace UnityVolumeRendering
             {
                 meshRenderers[i] = transform.GetChild(i).GetChild(0).GetComponent<MeshRenderer>();
                 volumeContainerObjects[i] = transform.GetChild(i).GetComponent<VolumeRenderedObject>();
+
+                volumeContainerObjects[i].transform.localScale = new Vector3(10, 4, 10);
+                volumeContainerObjects[i].transform.localPosition = new Vector3(0, -5.25253f + 3.96f * i, 0);
             }
             if (meshRenderers.Length == 0)
             {
@@ -98,7 +97,6 @@ namespace UnityVolumeRendering
             }
             transferFunction = volumeContainerObjects[0].transferFunction;
             transferFunction2D = volumeContainerObjects[0].transferFunction2D;
-            Debug.Log(transferFunction2D);
             UpdateMaterialProperties();
         }
 
@@ -436,10 +434,8 @@ namespace UnityVolumeRendering
             await updateMatLock.WaitAsync();
             for (int i = 0; i < meshRenderers.Length; i++)
             {
-                //Debug.Log(111);
                 MeshRenderer meshRenderer = meshRenderers[i];
                 bool useGradientTexture = tfRenderMode == TFRenderMode.TF2D || renderMode == RenderMode.DirectVolumeRendering || renderMode == RenderMode.IsosurfaceRendering;
-                //bool useGradientTexture = false;
                 Texture3D texture = useGradientTexture ? await volumeContainerObjects[i].dataset.GetGradientTextureAsync(progressHandler) : null;
                 meshRenderer.sharedMaterial.SetTexture("_GradientTex", texture);
 
@@ -514,34 +510,35 @@ namespace UnityVolumeRendering
             //  如果index = floor(cliped_height * meshRenderers.Length), index_height = 1 - frac(cliped_height * meshRenderers.Length)
             float index_heightX;
             float index_heightY;
-            float clipedHeightX = clipedHeightWindow.x;
-            float clipedHeightY = clipedHeightWindow.y;
+            float clipedHeightBottom = clipedHeightWindow.x;
+            float clipedHeightTop = clipedHeightWindow.y;
             //  判断底部裁切
-            if (index < Mathf.Floor(clipedHeightX * meshRenderers.Length))
+            if (index < Mathf.Floor(clipedHeightBottom * meshRenderers.Length))
             {
                 index_heightX = 1;
             }
-            else if (index > Mathf.Floor(clipedHeightX * meshRenderers.Length))
+            else if (index > Mathf.Floor(clipedHeightBottom * meshRenderers.Length))
             {
                 index_heightX = 0;
             }
             else
             {
-                index_heightX = (clipedHeightX * meshRenderers.Length - Mathf.Floor(clipedHeightX * meshRenderers.Length));
+                index_heightX = (clipedHeightBottom * meshRenderers.Length - Mathf.Floor(clipedHeightBottom * meshRenderers.Length));
             }
+
             //  判断顶部裁切
-            if (index < Mathf.Floor(clipedHeightY * meshRenderers.Length))
+            if (index < Mathf.Floor(clipedHeightTop * meshRenderers.Length))
             {
                 index_heightY = 1;
                 
             }
-            else if (index > Mathf.Floor(clipedHeightY * meshRenderers.Length))
+            else if (index > Mathf.Floor(clipedHeightTop * meshRenderers.Length))
             {
                 index_heightY = 0;
             }
             else
             {
-                index_heightY = (clipedHeightY * meshRenderers.Length - Mathf.Floor(clipedHeightY * meshRenderers.Length));
+                index_heightY = (clipedHeightTop * meshRenderers.Length - Mathf.Floor(clipedHeightTop * meshRenderers.Length));
             }
 
             //  如果index_heightX = 1 或者 index_heightY = 0, 则不渲染

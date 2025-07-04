@@ -112,29 +112,6 @@ for index in range(0,8):
 
     smoooth_res = np.array(smoooth_res)
 
-    # # 导出
-    # jsonRes = {
-    # 'xLength': pd_test_pred['xLength'].values[0].tolist(),
-    # 'yLength': pd_test_pred['yLength'].values[0].tolist(),
-    # 'zLength': pd_test_pred['zLength'].values[0].tolist(),
-    # 'data': np.array(smoooth_res).tolist()
-    # }
-
-    # import json
-
-    # jsonResStr = json.dumps(jsonRes)
-    # jsonRes = {}
-    # outputSmoothPath = os.path.join(HERE, 'res_smooth_3d', f'{interpolateFileName}_smooth_s_{spatial_window_radius}_t_{temporal_window_radius}_final_reverse.json')
-
-    # f = open(outputSmoothPath, 'w')
-    # f.write(jsonResStr)
-    # jsonResStr = ''
-    # f.close()
-
-    # json_res_pd = pd.read_json(outputSmoothPath)
-    # data = np.array(json_res_pd.data.values)
-    # len(json_res_pd)
-
     def map_values_with_condition(input_array):
         min_value = 1
         max_value = 500
@@ -151,6 +128,10 @@ for index in range(0,8):
 
     ##################################################################
     # 导出
+
+    if(not os.path.exists(os.path.join(HERE, 'UnityRawData'))):
+        os.makedirs(os.path.join(HERE, 'UnityRawData'))
+
     fileName = f'{interpolateFileName}_smooth_s_{spatial_window_radius}_t_{temporal_window_radius}_smooth_correct.raw'
     outputRawPath = os.path.join(HERE, 'UnityRawData', fileName)
     smoooth_res.tofile(outputRawPath)
@@ -161,7 +142,6 @@ for index in range(0,8):
     print(f'x:{xLength}')
     print(f'y:{yLength}')
     print(f'z:{zLength}')
-
 
     # 编写并导出配置文件ini
     outputIniPath = os.path.join(HERE, 'UnityRawData', f'{fileName}.ini')
