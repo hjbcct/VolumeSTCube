@@ -2,15 +2,18 @@ import geopandas as gpd
 import pandas as pd
 import numpy as np
 import os
-from tqdm import *
 from pyproj import Transformer
 from tqdm import tqdm
+import json
 
 HERE = os.path.dirname(__file__)
 ChinaGeoJsonPath = os.path.join(HERE, 'exampleData', 'chinaGeoJson.json')
 exampleAQIPath = os.path.join(HERE, 'exampleData', 'data_merged', 'LOC_AQI_0.csv')
 # 保存在本地的geoJson数据
-chinaGeoData = gpd.read_file(ChinaGeoJsonPath, crs='EPSG:4326')
+# chinaGeoData = gpd.read_file(ChinaGeoJsonPath, crs='EPSG:4326')
+chinaGeoData = gpd.read_file(ChinaGeoJsonPath)
+chinaGeoData = chinaGeoData.set_crs("EPSG:4326", allow_override=True)
+
 # EPSG转换器
 transformer = Transformer.from_crs("EPSG:4326", "EPSG:3857", always_xy=True)
 
@@ -114,7 +117,6 @@ for slice in range(0,8):
     ##################################################################
 
     # 我们发现，转换为3D材质后，Unity坐标系设置不同，需要反转Res
-    import numpy as np
 
     # 将列表分为 timeRange 组
     sub_arrays = np.array_split(temp_res, endTime - startTime)
@@ -139,7 +141,6 @@ for slice in range(0,8):
         'data': temp_res.tolist()
     }
     temp_res = []
-    import json
 
     jsonResStr = json.dumps(jsonRes)
     jsonRes = {}

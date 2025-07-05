@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 from tqdm import *
 import os
 from pyproj import Transformer
 import time
+import geopandas as gpd
 
 HERE = os.path.dirname(__file__)
 for index in range(0,8):
@@ -60,8 +60,6 @@ for index in range(0,8):
 
     def clipedChinaFrame(data):
         # 裁切中国地图
-        from scipy import stats
-        import geopandas as gpd
         temp_res = data
 
         ChinaInCompJsonPath = os.path.join(HERE, 'exampleData', 'chinaChange.json')
