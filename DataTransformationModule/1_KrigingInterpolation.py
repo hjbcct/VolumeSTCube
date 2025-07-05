@@ -10,7 +10,6 @@ HERE = os.path.dirname(__file__)
 ChinaGeoJsonPath = os.path.join(HERE, 'exampleData', 'chinaGeoJson.json')
 exampleAQIPath = os.path.join(HERE, 'exampleData', 'data_merged', 'LOC_AQI_0.csv')
 # 保存在本地的geoJson数据
-# chinaGeoData = gpd.read_file(ChinaGeoJsonPath, crs='EPSG:4326')
 chinaGeoData = gpd.read_file(ChinaGeoJsonPath)
 chinaGeoData = chinaGeoData.set_crs("EPSG:4326", allow_override=True)
 

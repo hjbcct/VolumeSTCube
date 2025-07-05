@@ -61,13 +61,13 @@ These will be located in:
 
 #### (b) In the Unity Editor:
 
-   - Navigate to the top menu bar and click `Volume Rendering > Load dataset > Load raw dataset`.
-   - Import the 8 `.raw` files **one by one**.  
+- Navigate to the top menu bar and click `Volume Rendering > Load dataset > Load raw dataset`.
+- Import the 8 `.raw` files **one by one**.  
      (This means you will execute `Load dataset > Load raw dataset` **8 times**.)
 
 #### (c) After importing, you will see 8 `VolumeRenderedObjects` in your scene.  
 
-   - Group them under the GameObject named `VolumeController`.
+- Group them under the GameObject named `VolumeController`.
 
 #### ⚠ **Important:**  
 
