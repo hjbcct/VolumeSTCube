@@ -344,71 +344,71 @@ namespace UnityVolumeRendering
             }
         }
 
-        [MenuItem("Volume Rendering/Cross section/Cross section plane")]
-        private static void OnMenuItemClick()
-        {
-            VolumeRenderedObject[] objects = GameObject.FindObjectsOfType<VolumeRenderedObject>();
-            if (objects.Length == 1)
-                VolumeObjectFactory.SpawnCrossSectionPlane(objects[0]);
-            else
-            {
-                CrossSectionPlaneEditorWindow wnd = new CrossSectionPlaneEditorWindow();
-                wnd.Show();
-            }
-        }
+        //[MenuItem("Volume Rendering/Cross section/Cross section plane")]
+        //private static void OnMenuItemClick()
+        //{
+        //    VolumeRenderedObject[] objects = GameObject.FindObjectsOfType<VolumeRenderedObject>();
+        //    if (objects.Length == 1)
+        //        VolumeObjectFactory.SpawnCrossSectionPlane(objects[0]);
+        //    else
+        //    {
+        //        CrossSectionPlaneEditorWindow wnd = new CrossSectionPlaneEditorWindow();
+        //        wnd.Show();
+        //    }
+        //}
 
-        [MenuItem("Volume Rendering/Cross section/Box cutout")]
-        private static void SpawnCutoutBox()
-        {
-            VolumeRenderedObject[] objects = GameObject.FindObjectsOfType<VolumeRenderedObject>();
-            if (objects.Length == 1)
-                VolumeObjectFactory.SpawnCutoutBox(objects[0]);
-        }
-        [MenuItem("Volume Rendering/Cross section/Sphere cutout")]
-        private static void SpawnCutoutSphere()
-        {
-            VolumeRenderedObject[] objects = GameObject.FindObjectsOfType<VolumeRenderedObject>();
-            if (objects.Length == 1)
-                VolumeObjectFactory.SpawnCutoutSphere(objects[0]);
-        }
+        //[MenuItem("Volume Rendering/Cross section/Box cutout")]
+        //private static void SpawnCutoutBox()
+        //{
+        //    VolumeRenderedObject[] objects = GameObject.FindObjectsOfType<VolumeRenderedObject>();
+        //    if (objects.Length == 1)
+        //        VolumeObjectFactory.SpawnCutoutBox(objects[0]);
+        //}
+        //[MenuItem("Volume Rendering/Cross section/Sphere cutout")]
+        //private static void SpawnCutoutSphere()
+        //{
+        //    VolumeRenderedObject[] objects = GameObject.FindObjectsOfType<VolumeRenderedObject>();
+        //    if (objects.Length == 1)
+        //        VolumeObjectFactory.SpawnCutoutSphere(objects[0]);
+        //}
 
-        [MenuItem("Volume Rendering/1D Transfer Function")]
-        private static void Show1DTFWindow()
-        {
-            VolumeRenderedObject volRendObj = SelectionHelper.GetSelectedVolumeObject();
-            if (volRendObj != null)
-            {
-                volRendObj.SetTransferFunctionMode(TFRenderMode.TF1D);
-                TransferFunctionEditorWindow.ShowWindow(volRendObj);
-            }
-            else
-            {
-                EditorUtility.DisplayDialog("No imported dataset", "You need to import a dataset first", "Ok");
-            }
-        }
+        //[MenuItem("Volume Rendering/1D Transfer Function")]
+        //private static void Show1DTFWindow()
+        //{
+        //    VolumeRenderedObject volRendObj = SelectionHelper.GetSelectedVolumeObject();
+        //    if (volRendObj != null)
+        //    {
+        //        volRendObj.SetTransferFunctionMode(TFRenderMode.TF1D);
+        //        TransferFunctionEditorWindow.ShowWindow(volRendObj);
+        //    }
+        //    else
+        //    {
+        //        EditorUtility.DisplayDialog("No imported dataset", "You need to import a dataset first", "Ok");
+        //    }
+        //}
 
-        [MenuItem("Volume Rendering/2D Transfer Function")]
-        private static void Show2DTFWindow()
-        {
-            TransferFunction2DEditorWindow.ShowWindow();
-        }
+        //[MenuItem("Volume Rendering/2D Transfer Function")]
+        //private static void Show2DTFWindow()
+        //{
+        //    TransferFunction2DEditorWindow.ShowWindow();
+        //}
 
-        [MenuItem("Volume Rendering/Slice renderer")]
-        private static void ShowSliceRenderer()
-        {
-            SliceRenderingEditorWindow.ShowWindow();
-        }
+        //[MenuItem("Volume Rendering/Slice renderer")]
+        //private static void ShowSliceRenderer()
+        //{
+        //    SliceRenderingEditorWindow.ShowWindow();
+        //}
 
-        [MenuItem("Volume Rendering/Value range")]
-        private static void ShowValueRangeWindow()
-        {
-            ValueRangeEditorWindow.ShowWindow();
-        }
+        //[MenuItem("Volume Rendering/Value range")]
+        //private static void ShowValueRangeWindow()
+        //{
+        //    ValueRangeEditorWindow.ShowWindow();
+        //}
 
-        [MenuItem("Volume Rendering/Settings")]
-        private static void ShowSettingsWindow()
-        {
-            ImportSettingsEditorWindow.ShowWindow();
-        }
+        //[MenuItem("Volume Rendering/Settings")]
+        //private static void ShowSettingsWindow()
+        //{
+        //    ImportSettingsEditorWindow.ShowWindow();
+        //}
     }
 }
