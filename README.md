@@ -4,8 +4,6 @@ This is the repo for the paper (https://ieeexplore.ieee.org/document/10858751)
 
 Please kindly find the release package (executable) in this repo.
 
-The source code will be released later.
-
 If you have any questions, feel free to contact jiabaoh20@outlook.com.
 
 ---
@@ -17,6 +15,30 @@ If you have any questions, feel free to contact jiabaoh20@outlook.com.
 
 - `RenderingModule/`  
   Unity project for volume rendering and interactive exploration.
+
+---
+
+## ⚙️ Requirements
+
+- **Python**
+
+Recommended version: Python 3.9
+
+- **Unity Editor**
+
+Recommended version: 2022.3.14f1c1
+
+(Other versions in the 2022.3 LTS stream may also work, but this version was used for development and testing.)
+
+- **Python packages**
+  
+See requirements.txt for a list of required Python packages.
+
+You can install them via:
+
+```bash
+pip install -r requirements.txt
+```
 
 ---
 
